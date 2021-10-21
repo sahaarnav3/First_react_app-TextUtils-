@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 
 
@@ -27,20 +27,20 @@ export default function TextForm(props) {
 
     return (
         <>
-        <div className="container">
-            <h1>{props.heading} </h1>
-            <div className="mb-3">
-                <textarea className="form-control" value={text} onChange={handleOnChange} placeholder="Enter Text Here.." id="myBox" rows="9"></textarea>
+            <div className="container my-5">
+                <h1>{props.heading} </h1>
+                <div className="mb-3">
+                    <textarea className="form-control" value={text} onChange={handleOnChange} placeholder="Enter Text Here.." id="myBox" rows="9"></textarea>
+                </div>
+                <button className="btn btn-primary" onClick={handleUpClick}>Convert to upper case</button>
+                <button className="btn btn-primary mx-3" onClick={handleLoClick}>Convert to Lower case</button>
+                <button className="btn btn-primary " onClick={removeExtraSpaces}>Remove Extra Spaces</button>
             </div>
-            <button className="btn btn-primary" onClick={handleUpClick}>Convert to upper case</button>
-            <button className="btn btn-primary mx-3" onClick={handleLoClick}>Convert to Lower case</button>
-            <button className="btn btn-primary " onClick={removeExtraSpaces}>Remove Extra Spaces</button>
-        </div>
-        <div className="container my-3">
-            <h2>Your Text Summary</h2>
-            <p>{text.split(" ").length} words and {text.length} characters</p>
-            <p>{0.004 * text.split(" ").length} Minutes Needed to Read</p>
-        </div>
+            <div className="container my-3">
+                <h2>Your Text Summary</h2>
+                <p>{text.split(" ").length} words and {text.length} characters</p>
+                <p>{0.004 * text.split(" ").length} Minutes Needed to Read</p>
+            </div>
         </>
     )
 }
