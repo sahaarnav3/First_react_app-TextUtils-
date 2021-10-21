@@ -12,16 +12,30 @@ export default function TextForm(props) {
         let newText = text.toUpperCase();
         setText(newText);
         console.log(text);
+        props.showAlert("Converted to Upper Case", "success");
     }
     const handleLoClick = () => {
         // console.log('Uppercase was clicked');
         let newText = text.toLowerCase();
         setText(newText);
         console.log(text);
+        props.showAlert("Converted to Lower Case", "success");
     }
     const removeExtraSpaces = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.showAlert("Extra Spacing Removed", "success");
+    }
+    const wordCount = (text) => {
+        if(text[0] == null)
+            return 0;
+        let newText = text.replace(/(^\s*)|(\s*$)/gi,"");
+        // newText = newText.replace(/\n /,"\n");
+        let n = newText.split(/[ ]+/).length;
+        if(text[n-1] == " ")
+            return n-1;
+        else    
+            return n;
     }
     const [text, setText] = useState('');
 
@@ -38,7 +52,8 @@ export default function TextForm(props) {
             </div>
             <div className="container my-3">
                 <h2>Your Text Summary</h2>
-                <p>{text.split(" ").length} words and {text.length} characters</p>
+                {/* <p>{text.split(" ").length} words and {text.length} characters</p> */}
+                <p>{wordCount(text)} words and {text.length} characters</p>
                 <p>{0.004 * text.split(" ").length} Minutes Needed to Read</p>
             </div>
         </>
