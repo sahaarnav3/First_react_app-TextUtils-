@@ -32,7 +32,7 @@ export default function TextForm(props) {
         let newText = text.replace(/(^\s*)|(\s*$)/gi,"");
         // newText = newText.replace(/\n /,"\n");
         let n = newText.split(/[ ]+/).length;
-        if(text[n-1] == " ")
+        if(text[n-1] === " ")
             return n-1;
         else    
             return n;
